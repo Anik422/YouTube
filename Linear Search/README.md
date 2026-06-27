@@ -2,7 +2,7 @@
 
 An award-winning, premium, and visually stunning **Linear Search Visualizer Dashboard** built using only raw HTML, CSS, and Vanilla JavaScript. Designed in a strict fullscreen layout inspired by modern SaaS interfaces like Linear, Apple, Stripe, and Figma.
 
-🎥 **[Watch the YouTube Video Tutorial here](https://www.youtube.com/)**
+🎥 **[Watch the YouTube Video Tutorial here](https://youtu.be/nKNwOKpE-2A)**
 
 ---
 
