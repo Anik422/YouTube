@@ -1,5 +1,7 @@
 # Reptile Interactive Cursor - Kinematic Glow Engine
 
+[![Watch on YouTube](https://img.shields.io/badge/YouTube-Watch%20on%20YouTube-red?style=for-the-badge&logo=youtube)](https://youtube.com/shorts/HkUybZ7mQqQ?feature=share)
+
 An interactive, high-performance HTML5 Canvas procedural animation displaying a bioluminescent, glowing creature (lizard/centipede) that trails the user's cursor with fluid, lifelike movements.
 
 ---
