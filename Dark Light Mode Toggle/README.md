@@ -8,7 +8,7 @@ A highly optimized, hardware-accelerated glassmorphic toggle button for switchin
 
 Watch the step-by-step creation and optimization tutorial on YouTube:
 
-👉 **[Watch the Tutorial on YouTube](https://www.youtube.com/your-video-link-here)**
+👉 **[Watch the Tutorial on YouTube](https://youtube.com/shorts/hrn111Hf9XQ)**
 
 ---
 
