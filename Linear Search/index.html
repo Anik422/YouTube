@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Search Visualizer — Dashboard Console</title>
+    <meta name="description" content="An award-winning, interactive step-by-step linear search visualizer dashboard console. Zero scroll layout, live typing log, active pseudocode highlighting, sound synthesis, and screen recording.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas for Particles -->
+    <canvas id="bg-particles"></canvas>
+    
+    <!-- Floating Blur Blobs (Mesh Gradient background) -->
+    <div class="blob-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    
+    <!-- Overlay Noise Texture -->
+    <div class="noise-overlay"></div>
+
+    <!-- Main Fullscreen Dashboard Wrapper -->
+    <div class="dashboard-wrapper">
+        
+        <!-- Header Utility Top Bar -->
+        <header class="app-header">
+            <div class="header-logo">
+                <span class="logo-dot"></span>
+                <span class="gradient-text">Linear Search</span>
+                <span class="badge">Console v1.0</span>
+            </div>
+            <div class="header-actions">
+                <!-- Screen Recording Button -->
+                <button id="btn-record" class="utility-btn" title="Record Dashboard Capture">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="12" r="4" class="record-dot" />
+                    </svg>
+                    <span class="btn-text">Record</span>
+                </button>
+                
+                <!-- Fullscreen Toggle -->
+                <button id="btn-fullscreen" class="utility-btn" title="Toggle Fullscreen">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                    </svg>
+                </button>
+                
+                <!-- Sound Effects Switch -->
+                <button id="btn-sound" class="utility-btn active" title="Toggle Sound Synthesis">
+                    <svg class="icon sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                    </svg>
+                    <svg class="icon sound-off hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                        <line x1="23" y1="9" x2="17" y2="15" />
+                        <line x1="17" y1="9" x2="23" y2="15" />
+                    </svg>
+                </button>
+                
+                <!-- Light/Dark Mode -->
+                <button id="btn-theme" class="utility-btn" title="Toggle Light/Dark Theme">
+                    <svg class="icon sun-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                    <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workspace Area -->
+        <main class="main-workspace" id="workspace">
+            
+            <!-- LEFT PANEL (25%): Controls & Config -->
+            <section class="left-panel glass-card">
+                <div class="panel-header">
+                    <h2>Configuration</h2>
+                    <span class="pulse-indicator"></span>
+                </div>
+                
+                <div class="panel-content">
+                    <div class="control-fields">
+                        <!-- Custom Array Input -->
+                        <div class="input-group">
+                            <label for="array-input">
+                                <span>Input Array</span>
+                                <span class="label-hint">Comma integers</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" id="array-input" value="15,8,22,5,40,18,9" placeholder="e.g. 15,8,22,5">
+                            </div>
+                        </div>
+                        
+                        <!-- Target Value Input -->
+                        <div class="input-group">
+                            <label for="target-input">Target Value</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="target-input" value="18" placeholder="Target">
+                            </div>
+                        </div>
+
+                        <!-- Speed Slider Control -->
+                        <div class="input-group">
+                            <label for="speed-slider">
+                                <span>Speed Slider</span>
+                                <span id="speed-display" class="speed-value">1.0x</span>
+                            </label>
+                            <div class="slider-wrapper">
+                                <span class="slider-label">Slow</span>
+                                <input type="range" id="speed-slider" min="0.1" max="3.0" step="0.1" value="1.0">
+                                <span class="slider-label">Fast</span>
+                            </div>
+                        </div>
+
+                        <!-- Mode selection -->
+                        <div class="input-group">
+                            <label>Search Mode</label>
+                            <div class="mode-segmented-control">
+                                <button id="mode-auto" class="segmented-btn active">Auto</button>
+                                <button id="mode-step" class="segmented-btn">Step-by-Step</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons-group">
+                        <button id="btn-generate" class="action-btn secondary" title="Randomize values">
+                            <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+                            </svg>
+                            <span>Randomize</span>
+                        </button>
+                        
+                        <button id="btn-start" class="action-btn primary" title="Run animation">
+                            <svg class="icon-small play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                            <svg class="icon-small pause-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />
+                            </svg>
+                            <span id="start-btn-text">Start Search</span>
+                        </button>
+
+                        <button id="btn-next" class="action-btn secondary hidden" title="Run single step">
+                            <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 4 15 12 5 20 5 4" /><line x1="19" y1="5" x2="19" y2="19" />
+                            </svg>
+                            <span>Next Step</span>
+                        </button>
+
+                        <button id="btn-reset" class="action-btn danger" title="Reset visualizer">
+                            <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                                <polyline points="3 3 3 8 8 8" />
+                            </svg>
+                            <span>Reset</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CENTER PANEL (50%): Large Array Visualizer and Logs -->
+            <section class="center-panel glass-card" id="capture-zone">
+                <div class="visualizer-header">
+                    <span class="badge visualizer-badge">Visualization Console</span>
+                    <div class="shortcut-tip"><span>Space</span> Play/Pause | <span>S</span> Step | <span>R</span> Reset</div>
+                </div>
+
+                <!-- Canvas Confetti Overlay -->
+                <canvas id="confetti-canvas"></canvas>
+                
+                <!-- Main Visualization elements -->
+                <div class="array-container-wrapper">
+                    <div class="array-container" id="array-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                    <!-- Pointer element shifting dynamically -->
+                    <div id="array-pointer" class="array-pointer hidden">
+                        <div class="pointer-arrow"></div>
+                        <div class="pointer-label">i = <span id="pointer-index-val">0</span></div>
+                        <div class="pointer-trail"></div>
+                    </div>
+                </div>
+
+                <!-- Live Explanation Terminal -->
+                <div class="explanation-terminal">
+                    <div class="terminal-bar">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="terminal-title">Console Logs</span>
+                    </div>
+                    <div class="terminal-content">
+                        <div id="explanation-text" class="explanation-text">> Terminal console initialized. Config inputs and start search...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHT PANEL (25%): Pseudocode & Real-time Stats -->
+            <section class="right-panel">
+                
+                <!-- Pseudocode -->
+                <div class="pseudocode-panel glass-card">
+                    <div class="panel-header">
+                        <h2>Pseudocode</h2>
+                    </div>
+                    <div class="code-container">
+                        <div class="line-highlighter" id="code-highlighter"></div>
+                        <pre class="line-numbers"><code>1
+2
+3
+4
+5
+6</code></pre>
+                        <pre class="code-lines"><code id="code-line-1" class="code-line">function linearSearch(array, target):</code><code id="code-line-2" class="code-line">    for each index i from 0 to length - 1:</code><code id="code-line-3" class="code-line">        currentValue = array[i]</code><code id="code-line-4" class="code-line">        if currentValue equals target:</code><code id="code-line-5" class="code-line">            return i  // Target found!</code><code id="code-line-6" class="code-line">    return -1  // Target not in array</code></pre>
+                    </div>
+                </div>
+
+                <!-- Live Metrics -->
+                <div class="metrics-panel glass-card">
+                    <div class="panel-header">
+                        <h2>Execution Statistics</h2>
+                    </div>
+                    <div class="panel-content">
+                        <!-- Progress Card -->
+                        <div class="progress-bar-card">
+                            <div class="progress-info">
+                                <span>Progress</span>
+                                <span id="progress-percentage">0%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div id="progress-fill" class="progress-fill"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Mini Stats Grid -->
+                        <div class="stats-mini-grid">
+                            <div class="mini-stat-card">
+                                <span class="stat-lbl">Index</span>
+                                <span id="stat-index" class="stat-val">—</span>
+                                <div class="stat-line-glow neon-blue"></div>
+                            </div>
+                            <div class="mini-stat-card">
+                                <span class="stat-lbl">Comparisons</span>
+                                <span id="stat-comparisons" class="stat-val">0</span>
+                                <div class="stat-line-glow neon-purple"></div>
+                            </div>
+                            <div class="mini-stat-card">
+                                <span class="stat-lbl">Target</span>
+                                <span id="stat-target" class="stat-val">—</span>
+                                <div class="stat-line-glow neon-cyan"></div>
+                            </div>
+                            <div class="mini-stat-card">
+                                <span class="stat-lbl">Array Size</span>
+                                <span id="stat-size" class="stat-val">0</span>
+                                <div class="stat-line-glow neon-pink"></div>
+                            </div>
+                        </div>
+
+                        <!-- Complexities -->
+                        <div class="complexities-group">
+                            <div class="complexity-pill">
+                                <span class="comp-label">Time Complexity</span>
+                                <span class="comp-val">O(N)</span>
+                            </div>
+                            <div class="complexity-pill">
+                                <span class="comp-label">Space Complexity</span>
+                                <span class="comp-val">O(1)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Status Bar (Dashboard Footer) -->
+        <footer class="dashboard-footer glass-card">
+            <div class="footer-segment">
+                <span class="footer-lbl">Status:</span>
+                <span id="footer-status" class="status-badge idle">IDLE</span>
+                <span class="status-indicator-dot" id="status-indicator-dot"></span>
+            </div>
+            
+            <div class="footer-segment separator">
+                <span class="footer-lbl">Speed:</span>
+                <span id="footer-speed" class="footer-val">1.0x</span>
+            </div>
+
+            <div class="footer-segment separator">
+                <span class="footer-lbl">Elapsed Time:</span>
+                <span id="footer-timer" class="footer-val timer">00:00.00</span>
+            </div>
+
+            <div class="footer-segment separator result-segment">
+                <span class="footer-lbl">Result:</span>
+                <span id="footer-result" class="footer-val result-badge">—</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Success Celebration Screen overlay -->
+    <div id="success-screen" class="outcome-overlay success hidden">
+        <div class="overlay-glass-card">
+            <div class="badge-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12" />
+                </svg>
+            </div>
+            <h2>Target Found!</h2>
+            <p>Located target successfully at index <span id="success-index-display" class="highlight-val">5</span>.</p>
+            <div class="stats-summary-pill">
+                <span>Total Comparisons: <strong id="success-comparisons-val">6</strong></span>
+            </div>
+            <button id="success-close-btn" class="glowing-btn mini">Dismiss</button>
+        </div>
+    </div>
+
+    <!-- Fail Screen overlay -->
+    <div id="fail-screen" class="outcome-overlay fail hidden">
+        <div class="overlay-glass-card">
+            <div class="badge-icon fail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </div>
+            <h2>Target Not Found</h2>
+            <p>Target value was not located inside array bounds. Returned -1.</p>
+            <div class="stats-summary-pill">
+                <span>Total Comparisons: <strong id="fail-comparisons-val">7</strong></span>
+            </div>
+            <button id="fail-close-btn" class="glowing-btn mini danger-btn">Dismiss</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
