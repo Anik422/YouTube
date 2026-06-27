@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reptile Interactive Cursor</title>
+</head>
+<body>
+    <!-- Toggle UI Button -->
+    <button id="toggleUiBtn" class="toggle-ui-btn" title="Toggle Controls">
+        <svg viewBox="0 0 24 24">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+        </svg>
+    </button>
+
+    <!-- Sidebar controls container -->
+    <div id="uiPanel" class="ui-container">
+        <div class="header">
+            <h1>Reptile Interactive Cursor</h1>
+            <p>Kinematic Glow Engine</p>
+        </div>
+
+        <!-- Presets Section -->
+        <div>
+            <div class="section-title">Color Themes</div>
+            <div class="preset-grid">
+                <button class="preset-btn active" data-preset="reef">
+                    <span class="color-dot" style="background: linear-gradient(135deg, #00f2fe, #4facfe);"></span>
+                    Reef
+                </button>
+                <button class="preset-btn" data-preset="cyberpunk">
+                    <span class="color-dot" style="background: linear-gradient(135deg, #ff007f, #ffaa00);"></span>
+                    Neon
+                </button>
+                <button class="preset-btn" data-preset="magma">
+                    <span class="color-dot" style="background: linear-gradient(135deg, #ff416c, #ff4b2b);"></span>
+                    Magma
+                </button>
+                <button class="preset-btn" data-preset="acid">
+                    <span class="color-dot" style="background: linear-gradient(135deg, #adff2f, #00ff00);"></span>
+                    Toxic
+                </button>
+                <button class="preset-btn" data-preset="ghost">
+                    <span class="color-dot" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);"></span>
+                    Ghost
+                </button>
+                <button class="preset-btn" data-preset="rainbow">
+                    <span class="color-dot" style="background: linear-gradient(135deg, #ff0000, #0000ff);"></span>
+                    Rainbow
+                </button>
+            </div>
+        </div>
+
+        <!-- Parameters Section -->
+        <div class="control-group">
+            <div class="section-title">Anatomy & Motion</div>
+            
+            <div class="slider-item">
+                <div class="slider-label">
+                    <span>Leg Count</span>
+                    <span class="slider-val" id="legCountVal">10</span>
+                </div>
+                <input type="range" id="legCount" min="2" max="30" value="10" step="1">
+            </div>
+
+            <div class="slider-item">
+                <div class="slider-label">
+                    <span>Tail Length</span>
+                    <span class="slider-val" id="tailLengthVal">60</span>
+                </div>
+                <input type="range" id="tailLength" min="10" max="200" value="60" step="5">
+            </div>
+
+            <div class="slider-item">
+                <div class="slider-label">
+                    <span>Creature Scale</span>
+                    <span class="slider-val" id="creatureScaleVal">0.8</span>
+                </div>
+                <input type="range" id="creatureScale" min="0.3" max="3.0" value="0.8" step="0.1">
+            </div>
+
+            <div class="slider-item">
+                <div class="slider-label">
+                    <span>Movement Speed</span>
+                    <span class="slider-val" id="maxSpeedVal">1.5</span>
+                </div>
+                <input type="range" id="maxSpeed" min="0.5" max="4.0" value="1.5" step="0.1">
+            </div>
+        </div>
+
+        <!-- Render Settings Section -->
+        <div class="control-group">
+            <div class="section-title">Rendering & FX</div>
+
+            <div class="slider-item">
+                <div class="slider-label">
+                    <span>Glow Intensity</span>
+                    <span class="slider-val" id="glowVal">15</span>
+                </div>
+                <input type="range" id="glow" min="0" max="35" value="15" step="1">
+            </div>
+
+            <div class="toggle-row">
+                <span>Ambient Spores</span>
+                <label class="switch">
+                    <input type="checkbox" id="showParticles" checked>
+                    <span class="slider-switch"></span>
+                </label>
+            </div>
+
+            <div class="toggle-row">
+                <span>Leg Motion Ribs</span>
+                <label class="switch">
+                    <input type="checkbox" id="drawRibs" checked>
+                    <span class="slider-switch"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info bar -->
+    <div class="info-overlay">
+        <div class="info-item">
+            <div class="info-dot"></div>
+            <span>Move mouse to guide</span>
+        </div>
+        <div class="info-item">
+            <div class="info-dot" style="animation-delay: 0.5s"></div>
+            <span>Click to pulse ripple</span>
+        </div>
+        <div class="info-item">
+            <div class="info-dot" style="animation-delay: 1.0s"></div>
+            <span>Spacebar: Pause</span>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
