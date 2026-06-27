@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Apple Navigation UI | Pure Liquid Glass Experience</title>
+    <meta name="description"
+        content="An ultra-premium, interactive floating liquid glass navigation bar designed with Apple-inspired physics-based animations, magnetic effects, and organic glows.">
+    <!-- Google Fonts: Inter (UI) & Outfit (Display) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-dark">
+    <!-- Smooth Dynamic Mesh Background -->
+    <div class="mesh-background" id="meshBg">
+        <div class="mesh-orb orb-1"></div>
+        <div class="mesh-orb orb-2"></div>
+        <div class="mesh-orb orb-3"></div>
+    </div>
+
+    <!-- Liquid Glass Cursor Glow (desktop only) -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Floating Glass Header -->
+    <header class="nav-header" id="navHeader">
+        <div class="nav-container">
+            <!-- Brand Logo -->
+            <a href="#hero" class="nav-brand" aria-label="Go to Home" id="navBrand">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+                </svg>
+                <span class="brand-text">AURA</span>
+            </a>
+
+            <!-- Semantic Navigation -->
+            <nav class="nav-bar" id="mainNav" aria-label="Main navigation">
+                <!-- Elastic Glow Capsule Background Indicator -->
+                <div class="nav-indicator" id="navIndicator"></div>
+
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#hero" class="nav-link active" data-index="0">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg>
+                            <span class="nav-label">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#products" class="nav-link" data-index="1">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                <line x1="12" y1="22.08" x2="12" y2="12" />
+                            </svg>
+                            <span class="nav-label">Products</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link" data-index="2">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <span class="nav-label">Services</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#portfolio" class="nav-link" data-index="3">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                <path d="M2 12h20" />
+                            </svg>
+                            <span class="nav-label">Portfolio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link" data-index="4">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                            <span class="nav-label">About</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link" data-index="5">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m22 2-7 20-4-9-9-4Z" />
+                                <path d="M22 2 11 13" />
+                            </svg>
+                            <span class="nav-label">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Action CTA Button -->
+            <div class="nav-actions" id="navActions">
+                <a href="#customizer" class="glass-btn btn-action">
+                    <span>Try Config</span>
+                    <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Mobile Toggle Menu Button -->
+            <button class="mobile-toggle" aria-label="Toggle Menu" aria-expanded="false" id="mobileToggle">
+                <span class="line line-top"></span>
+                <span class="line line-mid"></span>
+                <span class="line line-bottom"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-list">
+            <li><a href="#hero" class="mobile-link active" data-target="hero">Home</a></li>
+            <li><a href="#products" class="mobile-link" data-target="products">Products</a></li>
+            <li><a href="#services" class="mobile-link" data-target="services">Services</a></li>
+            <li><a href="#portfolio" class="mobile-link" data-target="portfolio">Portfolio</a></li>
+            <li><a href="#about" class="mobile-link" data-target="about">About</a></li>
+            <li><a href="#contact" class="mobile-link" data-target="contact">Contact</a></li>
+            <li><a href="#customizer" class="mobile-link btn-mobile-cta">Try Customizer</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Layout -->
+    <main class="content-wrapper">
+        <!-- Section 1: Hero -->
+        <section id="hero" class="section hero-section">
+            <div class="container hero-container">
+                <span class="badge hero-badge">World-Class Craftsmanship</span>
+                <h1 class="hero-title">
+                    Liquid Glass <br><span class="gradient-text">Magic Navigation</span>
+                </h1>
+                <p class="hero-subtitle">
+                    An ultra-premium, tactile menu UI with organic physics, magnetic alignment, cursor-following
+                    refraction, and glassmorphic depth. Built from scratch with raw HTML, CSS, and Vanilla JS.
+                </p>
+                <div class="hero-actions">
+                    <a href="#products" class="primary-btn">Explore Features</a>
+                    <a href="#customizer" class="secondary-btn">Customize Settings</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span class="mouse-icon">
+                    <span class="scroll-wheel"></span>
+                </span>
+                <span class="scroll-text">Scroll Down</span>
+            </div>
+        </section>
+
+        <!-- Section 2: Products / Features -->
+        <section id="products" class="section glass-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge">Architecture</span>
+                    <h2 class="section-title">The Anatomy of Magic</h2>
+                    <p class="section-subtitle">A synthesis of physical simulations and glass shaders tailored for
+                        exceptional web performance.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="glass-card ripple-trigger">
+                        <div class="card-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                                <path d="M2 12h20" />
+                            </svg>
+                        </div>
+                        <h3>Liquid Glass & Blur</h3>
+                        <p>Leverages high-density subpixel backdrop blur filters paired with light-shifting border
+                            reflections to simulate actual optical refraction.</p>
+                    </div>
+                    <div class="glass-card ripple-trigger">
+                        <div class="card-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
+                        <h3>Magnetic Pull</h3>
+                        <p>Links dynamically attract toward your cursor using spring-like math. The layout remains
+                            static while individual items stretch elastically.</p>
+                    </div>
+                    <div class="glass-card ripple-trigger">
+                        <div class="card-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <h3>Elastic Capsule</h3>
+                        <p>The navigation background indicator morphs and slides dynamically using linear interpolation
+                            (Lerp), making transition states fluid.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Services Showcase -->
+        <section id="services" class="section text-section">
+            <div class="container">
+                <div class="split-layout">
+                    <div class="split-content">
+                        <span class="badge">Performance</span>
+                        <h2 class="split-title">Optimized for GPU Acceleration</h2>
+                        <p class="split-desc">
+                            By utilizing exclusively `transform3d()` and `opacity` properties, we force the browser to
+                            cache styling layers in GPU memory. This prevents costly layout recalculation runs, keeping
+                            the framerate steady at 120Hz/144Hz on modern Pro displays.
+                        </p>
+                        <ul class="benefit-list">
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    class="checkmark">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                No Layout Thrashing (Reflows)
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    class="checkmark">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Will-Change optimization layers
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    class="checkmark">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Spring-physics Lerping interpolation
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="split-visual">
+                        <div class="orbit-visual">
+                            <div class="orbit-ring ring-1"></div>
+                            <div class="orbit-ring ring-2"></div>
+                            <div class="orbit-element element-1"></div>
+                            <div class="orbit-element element-2"></div>
+                            <div class="visual-glass-center">
+                                <span class="visual-text">144 FPS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Portfolio Grid -->
+        <section id="portfolio" class="section glass-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge">Visual Art</span>
+                    <h2 class="section-title">Design Presets</h2>
+                    <p class="section-subtitle">Experience different design languages matching hardware interfaces.</p>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item card-theme-deep" onclick="setAppTheme('theme-dark')">
+                        <div class="item-inner">
+                            <h3>Deep Obsidian</h3>
+                            <p>Rich dark gradients inspired by iOS dark mode. Minimalist and sleek.</p>
+                            <span class="preview-tag">Active Default</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item card-theme-neon" onclick="setAppTheme('theme-neon')">
+                        <div class="item-inner">
+                            <h3>Nebula Violet</h3>
+                            <p>A dreamy galactic mesh background with hyper-saturated glowing ambient light.</p>
+                            <span class="preview-tag">Click to Apply</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item card-theme-teal" onclick="setAppTheme('theme-teal')">
+                        <div class="item-inner">
+                            <h3>Aurora Borealis</h3>
+                            <p>Organic green-blue neon curtains mimicking northern light waves.</p>
+                            <span class="preview-tag">Click to Apply</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item card-theme-light" onclick="setAppTheme('theme-light')">
+                        <div class="item-inner">
+                            <h3>Studio Frost</h3>
+                            <p>Crisp light glassmorphism mirroring macOS studio aesthetics.</p>
+                            <span class="preview-tag">Click to Apply</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: About Section -->
+        <section id="about" class="section text-section">
+            <div class="container">
+                <div class="split-layout reverse">
+                    <div class="split-content">
+                        <span class="badge">Universal Accessibility</span>
+                        <h2 class="split-title">Designed for Everyone</h2>
+                        <p class="split-desc">
+                            We believe aesthetic perfection must go hand-in-hand with inclusivity. This menu is fully
+                            accessible for keyboard navigators and respects user motion settings:
+                        </p>
+                        <div class="info-block">
+                            <h4>Keyboard-friendly navigation</h4>
+                            <p>Full focus outlines and capsule tracking follow tab indexes. Interactive elements use
+                                proper ARIA labels and roles.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4>Reduced Motion Support</h4>
+                            <p>Gracefully transitions to flat crossfades and disables spatial translations when media
+                                queries register a preference for reduced motion.</p>
+                        </div>
+                    </div>
+                    <div class="split-visual">
+                        <div class="glass-mockup">
+                            <div class="mockup-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="mockup-line title-line"></div>
+                                <div class="mockup-line content-line-1"></div>
+                                <div class="mockup-line content-line-2"></div>
+                                <div class="mockup-line content-line-3"></div>
+                                <div class="mockup-focus-indicator">
+                                    <span class="focus-pulse"></span>
+                                    <span>Focus State Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Real-time Config Customizer -->
+        <section id="customizer" class="section customizer-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge">Interactive Lab</span>
+                    <h2 class="section-title">Magic Calibration Lab</h2>
+                    <p class="section-subtitle">Calibrate physics constants and render options in real time. Experience
+                        the fluid shifts immediately.</p>
+                </div>
+
+                <div class="customizer-box glass-panel">
+                    <div class="panel-left">
+                        <div class="control-group">
+                            <label for="magnetStrength">Magnetic Attraction Force (<span
+                                    id="magnetVal">25</span>px)</label>
+                            <input type="range" id="magnetStrength" min="0" max="60" value="25" step="1">
+                            <span class="input-desc">Maximum distance nav links shift towards the mouse cursor.</span>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="lerpConstant">Elasticity Delay (Lerp Coeff: <span
+                                    id="lerpVal">0.12</span>)</label>
+                            <input type="range" id="lerpConstant" min="0.03" max="0.4" value="0.12" step="0.01">
+                            <span class="input-desc">Lower values increase elasticity lag, producing a jelly-like
+                                glide.</span>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="blurIntensity">Backdrop Glass Blur (<span id="blurVal">25</span>px)</label>
+                            <input type="range" id="blurIntensity" min="0" max="50" value="25" step="1">
+                            <span class="input-desc">Underlying layout blur inside the navigation bar capsule.</span>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="glowScale">Active Glow Intensity (<span id="glowVal">0.3</span>)</label>
+                            <input type="range" id="glowScale" min="0" max="1" value="0.3" step="0.05">
+                            <span class="input-desc">Ambient back-glow radiating behind the selected navigation
+                                capsule.</span>
+                        </div>
+                    </div>
+
+                    <div class="panel-right">
+                        <div class="preset-selector">
+                            <h4>Design Schemes</h4>
+                            <div class="preset-buttons">
+                                <button class="preset-btn active" onclick="setAppTheme('theme-dark')">Deep
+                                    Obsidian</button>
+                                <button class="preset-btn" onclick="setAppTheme('theme-neon')">Nebula Violet</button>
+                                <button class="preset-btn" onclick="setAppTheme('theme-teal')">Aurora Teal</button>
+                                <button class="preset-btn" onclick="setAppTheme('theme-light')">Studio Frost</button>
+                            </div>
+                        </div>
+
+                        <div class="toggle-group">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggleCursorGlow" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-info">
+                                <h4>Interactive Cursor Glow</h4>
+                                <p>Render a soft radial spotlight trailing the mouse position.</p>
+                            </div>
+                        </div>
+
+                        <div class="toggle-group">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggleNavbarParallax" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-info">
+                                <h4>3D Parallax Tilt</h4>
+                                <p>Tilt navigation panel slightly relative to mouse position.</p>
+                            </div>
+                        </div>
+
+                        <div class="reset-wrapper">
+                            <button class="reset-btn" id="resetCustomizer">Reset Constants</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Contact -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="contact-box glass-panel text-center">
+                    <span class="badge">Get in Touch</span>
+                    <h2>Ready to Build Something Magical?</h2>
+                    <p>Integrate these premium liquid designs in your next award-winning landing page or application
+                        dashboard.</p>
+                    <form class="contact-form"
+                        onsubmit="event.preventDefault(); alert('Visual Demo Only: Message Simulated!')">
+                        <div class="input-row">
+                            <input type="text" placeholder="Name" required aria-label="Your Name">
+                            <input type="email" placeholder="Email" required aria-label="Your Email">
+                        </div>
+                        <textarea placeholder="Your Message" rows="4" required aria-label="Your Message"></textarea>
+                        <button type="submit" class="primary-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 Aura Systems. Crafted for Ultra-Premium Experiences.</p>
+            <div class="footer-links">
+                <a href="#hero">Back to Top</a>
+                <a href="https://apple.com" target="_blank" rel="noopener noreferrer">Apple Inspiration</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+
+</html>
